@@ -22,7 +22,20 @@
     db: "{{ pg_db }}"
     name: "{{ pg_user }}"
     password: "{{ pg_password }}"
-  
+
+- name: Copy SQL script into nodes
+  copy:
+    src: init.sql
+    dest: /tmp/init.sql
+
+- name: Run SQL script
+  community.postgresql.postgresql_script:
+    db: postgres
+    path: /tmp/init.sql
+    named_args:
+      id_user: 0
+    encoding: UTF-8  
+
 - name: Restart postgresql service
   service:
     name: postgresql
