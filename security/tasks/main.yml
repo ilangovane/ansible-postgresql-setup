@@ -1,0 +1,23 @@
+---
+# tasks file for security
+
+- name: Copy certificates
+  copy:
+    src: "{{ item }}"
+    dest: /tmp
+  with_items:
+    - certificate_1.cer
+    - certificate_2.cer
+
+- name: Import certificates into keystore
+  community.general.java_cert:
+    cert_path: "{{ item.path }}"
+    keystore_path: /etc/ssl/certs/java/cacerts
+    keystore_pass: changeit
+    cert_alias: "{{ item.alias }}"
+    trust_cacert: true
+  loop:
+    - { alias: 'alias 1' , path: '/tmp/certificate_1.cer' }
+    - { alias: 'alias 2' , path: '/tmp/certificate_2.cer' }
+
+
