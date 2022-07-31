@@ -1,0 +1,11 @@
+---
+# tasks file for database
+
+  - name: Configure nodes
+    hosts: all
+    roles:
+      - builder  
+  - name: Déploiement Postgresql
+    hosts: worker
+    roles:
+      - database
