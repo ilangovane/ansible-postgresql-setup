@@ -1,0 +1,18 @@
+---
+
+postgresql_version: 13
+
+# vars file for database
+pg_auth_admin_auth: trust
+pg_authent_local: trust
+pg_authent_ipv4_local: trust
+pg_authent_ipv6_local: trust
+
+pg_authent_replica: trust
+pg_authent_replica_ipv4: trust
+pg_authent_replica_ipv6: trust
+
+# User account and databse
+pg_user: administrator
+pg_password: admin@BD
+pg_db: bankdb

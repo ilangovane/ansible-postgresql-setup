@@ -1,0 +1,9 @@
+---
+# tasks file for builder
+- name: Install required packages
+  apt: 
+    name: "{{ item }}"
+    update_cache: yes
+  with_items:
+    - maven
+    - openjdk-11-jdk
