@@ -8,6 +8,11 @@
     - python3-psycopg2
     - postgresql
 
+- name: Service PostgreSQL started
+  service:
+    name: postgresql
+    state: started
+
 - name: Replacing /etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
   template:
     src: pg_hba.conf.j2
